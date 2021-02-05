@@ -1,0 +1,56 @@
+There are 2 ways to check my program
+
+1) You can use program interface
+Go to page
+http://localhost:8080/validateRoom
+Add the coordinates and check/draw your room!
+
+Pls remember that you always start at coordinate [0,0];
+
+My program always connects to database and get saved points from it.
+Don't remember to clear coordinates if you want to draw another room.
+You can easy do it using program interface in browser - only press the button "Clear coordinates"!
+
+2) You can use POST
+as example
+
+//true (square)
+{
+    "room": [
+        {"x": 100, "y": 0},
+        {"x": 100, "y": 100},
+        {"x": 0, "y": 100},
+        {"x": 0, "y": 0}
+        ]
+}
+
+//false (less than 4 corners)
+{
+    "room": [
+        {"x": 100, "y": 0},
+        {"x": 100, "y": 100},
+        ]
+}
+//false (diagonall walls)
+{
+    "room": [
+        {"x": 100, "y": 0},
+        {"x": 90, "y": 100},
+        {"x": 0, "y": 90},
+        {"x": 10, "y": 60}
+        ]
+}
+// L shaped room
+{
+    "room": [
+        {"x": 100, "y": 0},
+        {"x": 100, "y": 100},
+        {"x": 200, "y": 100},
+        {"x": 200, "y": 200},
+        {"x": 0, "y": 200},
+        {"x": 0, "y": 0}
+        ]
+}
+
+Thank u! Have a nice day!
+

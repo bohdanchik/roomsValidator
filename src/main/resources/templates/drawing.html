@@ -1,0 +1,45 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Drawing</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+<header th:insert="blocks/header :: header"></header>
+<main>
+
+
+    <div class="container mt-5 mb-5">
+
+        <canvas id="myCanvas" width="1100" height="400"
+                style="background-color:white;">
+            Your browser dosen't apply Canvas
+        </canvas>
+
+            <script th:inline="javascript">
+
+                var canvas = document.getElementById("myCanvas"),
+                    context = canvas.getContext("2d");
+                context.beginPath();
+                context.moveTo(0, 0);
+
+                [# th:each="el, itemStat : ${coord}"]
+                    var x = [[*{coord[__${itemStat.index}__].x}]];
+                    var y = [[*{coord[__${itemStat.index}__].y}]];
+                    context.lineTo(x, y);
+                    context.moveTo(x, y);
+                [/]
+
+                context.closePath();
+                context.strokeStyle = "black";
+                context.stroke();
+            </script>
+        <div th:text="${message}" class="container mt-5 mb-5"></div>
+</body>
+</div>
+
+</main>
+</body>
+</html>

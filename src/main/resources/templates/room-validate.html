@@ -1,0 +1,47 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Coordinates</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<header th:insert="blocks/header :: header"></header>
+<main>
+    <body>
+
+    <div class="container mt-5 mb-5">
+        <h3>Enter coordinates and draw your room!
+            Please enter big numbers like more than 20 and remember that you start at coordinate [0,0]</h3>
+        <form action="validateRoom" method="post">
+            <input type="text" name="xcoor" placeholder="Enter a x coordinate" class="form-control"><br>
+            <input type="text" name="ycoor" placeholder="Enter an y coordinate" class="form-control"><br>
+            <button type="submit" class="btn btn-success">Add</button>
+        </form>
+        <br>
+        <form action="clear" method="post">
+            <button type="submit" class="btn btn-success">Clear coordinates</button>
+        </form>
+    </div>
+
+    <div class="container mt-5">
+        <h3>List of your coordinates</h3>
+        <h1 th:text="${message}"></h1>
+        <div th:each="el, itemStat : ${coord}" class="alert alert-info mt-2">
+            <p th:text="*{coord[__${itemStat.index}__].x}"></p>
+            <p th:text="*{coord[__${itemStat.index}__].y}"></p>
+        </div>
+    </div>
+
+    <div class="container mt-5">
+        <form action="drawing" method="post">
+            <button type="submit" class="btn btn-success">Validate and draw!</button>
+        </form>
+    </div>
+
+    </body>
+    </div>
+
+</main>
+</body>
+</html>
