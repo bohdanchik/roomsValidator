@@ -7,8 +7,8 @@ Add the coordinates and check/draw your room!
 
 Pls remember that you always start at coordinate [0,0];
 
-My program always connects to database and get saved points from it.
-Don't remember to clear coordinates if you want to draw another room.
+My program always connects to database and gets saved points from it.
+Don't forget to clear coordinates if you want to draw another room.
 You can easy do it using program interface in browser - only press the button "Clear coordinates"!
 
 2) You can use POST
